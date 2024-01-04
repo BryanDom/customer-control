@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+      xmlns="http://www.w3.org/1999/xhtml">
+    <head th:replace="layout/plantilla :: head">
+        <title>Agregar Usuario</title>
+        <meta charset="UTF-8"/>
+    </head>
+    <body>
+        <header th:replace="layout/plantilla :: header"></header>
+
+        <section id="agregar">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 mx-auto">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4>Agregar Usuario</h4>
+                                <a th:href="@{/login}" class="btn btn-light btn-block">
+                                    <i class="fas fa-arrow-left"></i> [[#{accion.regresar}]]
+                                </a>
+                            </div>
+                            <div class="card-body">
+                                <form method="POST" th:action="@{/registrar}" th:object="${usuario}" class="was-validated">
+                                    <div class="modal-body">
+                                        <div class="form-group">
+                                            <label for="username">Username</label>
+                                            <input id="username" type="text" class="form-control" th:field="*{username}" required="true">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="password">Password</label>
+                                            <input id="password" type="password" class="form-control" th:field="*{password}" required="true">
+                                        </div>
+                                        <div style="clear: both"></div>
+                                        <button type="submit" class="btn btn-success btn-block">
+                                            <i class="fas fa-check"></i> [[#{accion.guardar}]]
+                                        </button>
+                                        <input type="reset" value="Reset">
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div> 
+                </div>
+            </div>
+        </section>
+
+        <footer th:replace="layout/plantilla :: footer"></footer>
+    </body>
+</html>
+
